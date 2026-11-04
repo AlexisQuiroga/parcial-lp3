@@ -1,0 +1,99 @@
+@page
+@model RegistroModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Crear cuenta</h4>
+            </div>
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <form method="post" asp-page="Registro">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Nombre" class="form-label">Nombre</label>
+                            <input asp-for="Nombre" class="form-control" placeholder="Tu nombre" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Apellido" class="form-label">Apellido</label>
+                            <input asp-for="Apellido" class="form-control" placeholder="Tu apellido" />
+                            <span asp-validation-for="Apellido" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NombreUsuario" class="form-label">Nombre de usuario</label>
+                        <input asp-for="NombreUsuario" class="form-control" placeholder="Solo letras, números, guión o guión bajo" />
+                        <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Correo electrónico</label>
+                        <input asp-for="Email" class="form-control" placeholder="ejemplo@correo.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Edad" class="form-label">Edad</label>
+                        <input asp-for="Edad" class="form-control" type="number" min="16" max="120" placeholder="Tu edad" />
+                        <span asp-validation-for="Edad" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Contrasena" class="form-label">Contraseña</label>
+                        <input asp-for="Contrasena" class="form-control" placeholder="Mínimo 6 caracteres, una mayúscula y un número" />
+                        <span asp-validation-for="Contrasena" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmarContrasena" class="form-label">Confirmar contraseña</label>
+                        <input asp-for="ConfirmarContrasena" class="form-control" placeholder="Repetí la contraseña" />
+                        <span asp-validation-for="ConfirmarContrasena" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Telefono" class="form-label">Teléfono</label>
+                        <input asp-for="Telefono" class="form-control" id="campoTelefono"
+                               placeholder="Ej: 011-4567-8900" maxlength="14"
+                               oninput="formatearTelefono(this)" autocomplete="off" />
+                        <small class="text-muted">Escribí solo números, los guiones se agregan solos.</small>
+                        <span asp-validation-for="Telefono" class="text-danger d-block"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                </form>
+
+            </div>
+        </div>
+        <p class="text-center mt-3">¿Ya tenés cuenta? <a asp-page="/Login">Iniciá sesión</a></p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function formatearTelefono(input) {
+            var d = input.value.replace(/\D/g, '');
+            var ca = (d.charAt(0) === '0') ? 3 : 2;
+            var maxDigitos = ca + 8;
+            if (d.length > maxDigitos) d = d.slice(0, maxDigitos);
+
+            var r = '';
+            if (d.length <= ca) {
+                r = d;
+            } else if (d.length <= ca + 4) {
+                r = d.slice(0, ca) + '-' + d.slice(ca);
+            } else {
+                r = d.slice(0, ca) + '-' + d.slice(ca, ca + 4) + '-' + d.slice(ca + 4);
+            }
+            input.value = r;
+        }
+    </script>
+}
