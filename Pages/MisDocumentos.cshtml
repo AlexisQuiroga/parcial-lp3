@@ -1,0 +1,71 @@
+@page
+@model MisDocumentosModel
+@{
+    ViewData["Title"] = "Mis Documentos";
+}
+
+@if (!Model.EstaLogueado)
+{
+    <div class="alert alert-warning text-center">
+        <strong>Acceso restringido.</strong> Debés <a asp-page="/Login">iniciar sesión</a> para ver esta página.
+    </div>
+}
+else
+{
+    <h2>Mis Documentos</h2>
+    <p class="text-muted">Bienvenido, <strong>@Model.NombreUsuario</strong></p>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Subir documento</h5>
+        </div>
+        <div class="card-body">
+
+            @if (!string.IsNullOrEmpty(Model.MensajeSubida))
+            {
+                <div class="alert @(Model.SubidaExitosa ? "alert-success" : "alert-danger")">
+                    @Model.MensajeSubida
+                </div>
+            }
+
+            <form method="post" enctype="multipart/form-data" asp-page="MisDocumentos">
+                <div class="mb-3">
+                    <label asp-for="Archivo" class="form-label">Seleccionar archivo (PDF, DOC, DOCX)</label>
+                    <input asp-for="Archivo" class="form-control" type="file" accept=".pdf,.doc,.docx" />
+                    <span asp-validation-for="Archivo" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Subir</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Documentos subidos</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.Archivos.Count == 0)
+            {
+                <p class="text-muted">Todavía no subiste ningún documento.</p>
+            }
+            else
+            {
+                <ul class="list-group">
+                    @foreach (var nombreArchivo in Model.Archivos)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>@nombreArchivo</span>
+                            <a href="/documentos/@Model.NombreUsuario/@nombreArchivo"
+                               class="btn btn-sm btn-outline-primary" target="_blank">Ver</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
