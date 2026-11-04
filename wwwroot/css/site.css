@@ -1,0 +1,160 @@
+/* Estilos generales */
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 60px;
+}
+
+/* Navbar */
+.navbar-principal {
+    background-color: #1a237e;
+}
+
+.navbar-principal .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.navbar-principal .nav-link {
+    color: #e8eaf6 !important;
+    margin: 0 5px;
+}
+
+.navbar-principal .nav-link:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* Logo en navbar */
+.logo-nav {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Banner de inicio */
+.banner-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.banner-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.banner-texto {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.banner-texto h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.banner-texto p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Cards de servicios */
+.card-servicio {
+    border: none;
+    border-top: 4px solid #1a237e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card-servicio:hover {
+    transform: translateY(-4px);
+}
+
+.card-servicio .card-title {
+    color: #1a237e;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer-principal {
+    background-color: #1a237e;
+    color: #e8eaf6;
+}
+
+.footer-principal p {
+    font-size: 0.9rem;
+}
+
+.logo-footer {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+/* Formularios */
+.card-header.bg-primary {
+    background-color: #1a237e !important;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+
+    .banner-img {
+        height: 180px;
+    }
+
+    .banner-texto h1 {
+        font-size: 1.3rem;
+    }
+
+    .banner-texto p {
+        font-size: 0.9rem;
+    }
+
+    .logo-nav {
+        height: 30px;
+    }
+
+    .navbar-principal .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .card-servicio {
+        margin-bottom: 15px;
+    }
+
+    .footer-principal {
+        font-size: 0.85rem;
+    }
+
+    .logo-footer {
+        height: 35px;
+    }
+}
+
+/* Media queries para tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .banner-img {
+        height: 220px;
+    }
+
+    .banner-texto h1 {
+        font-size: 1.6rem;
+    }
+}
