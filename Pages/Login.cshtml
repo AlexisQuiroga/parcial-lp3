@@ -1,0 +1,46 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Iniciar sesión</h4>
+            </div>
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                @if (!string.IsNullOrEmpty(Model.MensajeError))
+                {
+                    <div class="alert alert-danger">@Model.MensajeError</div>
+                }
+
+                <form method="post" asp-page="Login">
+                    <div class="mb-3">
+                        <label asp-for="NombreUsuario" class="form-label">Nombre de usuario</label>
+                        <input asp-for="NombreUsuario" class="form-control" placeholder="Tu nombre de usuario" />
+                        <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Contrasena" class="form-label">Contraseña</label>
+                        <input asp-for="Contrasena" class="form-control" placeholder="Tu contraseña" />
+                        <span asp-validation-for="Contrasena" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                </form>
+
+            </div>
+        </div>
+        <p class="text-center mt-3">¿No tenés cuenta? <a asp-page="/Registro">Registrate acá</a></p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
