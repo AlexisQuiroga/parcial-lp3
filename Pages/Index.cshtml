@@ -1,0 +1,44 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="banner-container mb-4">
+    <img src="~/imagenes/logo3.png" alt="Banner Asesoría Legal Global" class="banner-img" />
+    <div class="banner-texto">
+        <h1>Asesoría Legal Global</h1>
+        <p>Tu solución legal de confianza</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4 mb-3">
+        <div class="card card-servicio">
+            <div class="card-body text-center">
+                <h5 class="card-title">Derecho Civil</h5>
+                <p class="card-text">Contratos, sucesiones, familia y más. Asesoramiento personalizado para cada situación.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card card-servicio">
+            <div class="card-body text-center">
+                <h5 class="card-title">Derecho Laboral</h5>
+                <p class="card-text">Representación en conflictos laborales, despidos y negociaciones colectivas.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card card-servicio">
+            <div class="card-body text-center">
+                <h5 class="card-title">Derecho Comercial</h5>
+                <p class="card-text">Constitución de sociedades, contratos comerciales y resolución de disputas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <p class="lead">¿Primera vez aquí? <a asp-page="/Registro">Registrate</a> para acceder a nuestros servicios en línea.</p>
+</div>
